@@ -18,6 +18,7 @@ import javax.swing.ImageIcon;
 import java.awt.Frame;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JSeparator;
 
 public class MyApplication extends JFrame {
 
@@ -66,6 +67,7 @@ public class MyApplication extends JFrame {
 		menuBar.add(mnFile);
 		
 		mntmShowName = new JMenuItem("Show Name");
+		mntmShowName.setIcon(new ImageIcon(MyApplication.class.getResource("/images16/facebook_16.png")));
 		mntmShowName.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(showNameJFrame==null || showNameJFrame.isClosed()) {
@@ -78,11 +80,15 @@ public class MyApplication extends JFrame {
 		mnFile.add(mntmShowName);
 		
 		mntmExit = new JMenuItem("Exit");
+		mntmExit.setIcon(new ImageIcon(MyApplication.class.getResource("/images16/close_16.png")));
 		mntmExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
 			}
 		});
+		
+		JSeparator separator = new JSeparator();
+		mnFile.add(separator);
 		mnFile.add(mntmExit);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
