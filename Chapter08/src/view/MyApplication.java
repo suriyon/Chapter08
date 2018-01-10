@@ -24,7 +24,9 @@ public class MyApplication extends JFrame {
 	private JPanel contentPane;
 	private JDesktopPane desktopPane;
 	private ShowNameJFrame showNameJFrame;
+	private CalculatorJFrame calculatorJFrame;
 	private JMenuItem mntmShowName;
+	private JMenuItem mntmExit;
 
 	/**
 	 * Launch the application.
@@ -74,6 +76,14 @@ public class MyApplication extends JFrame {
 			}
 		});
 		mnFile.add(mntmShowName);
+		
+		mntmExit = new JMenuItem("Exit");
+		mntmExit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
+		mnFile.add(mntmExit);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -101,11 +111,23 @@ public class MyApplication extends JFrame {
 		});
 		toolBarShowName.setIcon(new ImageIcon(MyApplication.class.getResource("/images32/facebook.png")));
 		toolBar.add(toolBarShowName);
+		
+		JButton toolBarCalculator = new JButton("Calculator");
+		toolBarCalculator.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(calculatorJFrame==null || calculatorJFrame.isClosed()) {
+					calculatorJFrame = new CalculatorJFrame();
+					calculatorJFrame.setVisible(true);
+					desktopPane.add(calculatorJFrame);
+				}
+			}
+		});
+		toolBarCalculator.setIcon(new ImageIcon(MyApplication.class.getResource("/images32/calculator.png")));
+		toolBar.add(toolBarCalculator);
 		toolBarExit.setIcon(new ImageIcon(MyApplication.class.getResource("/images32/close.png")));
 		toolBar.add(toolBarExit);
 		
 		desktopPane = new JDesktopPane();
 		contentPane.add(desktopPane, BorderLayout.CENTER);
 	}
-
 }
