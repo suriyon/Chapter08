@@ -11,6 +11,10 @@ import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
+import java.awt.Color;
+import javax.swing.SwingConstants;
 
 public class ShowNameJFrame extends JInternalFrame {
 	private JTextField textName;
@@ -44,47 +48,55 @@ public class ShowNameJFrame extends JInternalFrame {
 		setTitle("Show Name JFrame");
 		setFrameIcon(new ImageIcon(ShowNameJFrame.class.getResource("/images32/facebook.png")));
 		setClosable(true);
-		setBounds(100, 100, 435, 257);
+		setBounds(100, 100, 435, 276);
 		getContentPane().setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("ชื่อ-นามสกุล");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblNewLabel.setBounds(36, 43, 65, 14);
-		getContentPane().add(lblNewLabel);
-		
-		textName = new JTextField();
-		textName.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		textName.setBounds(111, 40, 162, 20);
-		getContentPane().add(textName);
-		textName.setColumns(10);
-		
-		JButton btnShow = new JButton("Show");
-		btnShow.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String name = textName.getText();				
-				lblShow.setText("สวัสดีคุณ " + name);
-				textName.setText("");
-			}
-		});
-		btnShow.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		btnShow.setBounds(293, 39, 89, 23);
-		getContentPane().add(btnShow);
-		
-		lblShow = new JLabel("New label");
-		lblShow.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblShow.setBounds(36, 100, 346, 34);
-		getContentPane().add(lblShow);
-		
 		JButton btnClose = new JButton("Close");
+		btnClose.setIcon(new ImageIcon(ShowNameJFrame.class.getResource("/images32/close.png")));
 		btnClose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 			}
 		});
 		btnClose.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		btnClose.setBounds(164, 177, 89, 23);
+		btnClose.setBounds(151, 190, 109, 41);
 		getContentPane().add(btnClose);
+		
+		JPanel panel = new JPanel();
+		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panel.setBounds(10, 11, 399, 157);
+		getContentPane().add(panel);
+		panel.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("ชื่อ-นามสกุล");
+		lblNewLabel.setBounds(20, 26, 65, 14);
+		panel.add(lblNewLabel);
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		
+		textName = new JTextField();
+		textName.setBounds(95, 23, 162, 20);
+		panel.add(textName);
+		textName.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		textName.setColumns(10);
+		
+		JButton btnShow = new JButton("Show");
+		btnShow.setBounds(275, 11, 109, 41);
+		panel.add(btnShow);
+		btnShow.setIcon(new ImageIcon(ShowNameJFrame.class.getResource("/images32/facebook.png")));
+		btnShow.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String name = textName.getText();				
+				lblShow.setText("Hi " + name + " !");
+				textName.setText("");
+			}
+		});
+		btnShow.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		
+		lblShow = new JLabel("New label");
+		lblShow.setHorizontalAlignment(SwingConstants.CENTER);
+		lblShow.setBounds(23, 83, 346, 34);
+		panel.add(lblShow);
+		lblShow.setFont(new Font("Tahoma", Font.PLAIN, 20));
 
 	}
-
 }

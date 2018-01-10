@@ -28,6 +28,7 @@ public class MyApplication extends JFrame {
 	private CalculatorJFrame calculatorJFrame;
 	private JMenuItem mntmShowName;
 	private JMenuItem mntmExit;
+	private JMenuItem mntmCalculator;
 
 	/**
 	 * Launch the application.
@@ -86,6 +87,19 @@ public class MyApplication extends JFrame {
 				System.exit(0);
 			}
 		});
+		
+		mntmCalculator = new JMenuItem("Calculator");
+		mntmCalculator.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(calculatorJFrame==null || calculatorJFrame.isClosed()) {
+					calculatorJFrame = new CalculatorJFrame();
+					calculatorJFrame.setVisible(true);
+					desktopPane.add(calculatorJFrame);
+				}
+			}
+		});
+		mntmCalculator.setIcon(new ImageIcon(MyApplication.class.getResource("/images16/calculator_16.png")));
+		mnFile.add(mntmCalculator);
 		
 		JSeparator separator = new JSeparator();
 		mnFile.add(separator);
